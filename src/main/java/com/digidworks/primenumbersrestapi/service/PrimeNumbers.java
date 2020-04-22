@@ -32,7 +32,7 @@ public class PrimeNumbers {
 
         foundNotPrime = false;
 
-        long upperLimit = (long) Math.sqrt(number);
+        long upperLimit = (long) Math.ceil(Math.sqrt(number));
         int maxPoolSize = 200;
         long pageSize = upperLimit / maxPoolSize;
 
@@ -68,15 +68,22 @@ public class PrimeNumbers {
      * @param number the given number.
      * @return the next prime which is >=number.
      */
-    public Integer findNextPrime(Integer number) {
-        return Integer.MAX_VALUE;
+    public long findNextPrime(long number) throws ExecutionException, InterruptedException {
+        long nextProbablePrime = number % 2 == 0 ? number + 1 : number;
+
+        while (!isPrime(nextProbablePrime)) {
+            nextProbablePrime += 2;
+        }
+
+        return nextProbablePrime;
     }
 
     /**
-     * Checks for primality, suitable for parallelization. It breaks when the class flag found not prime is set.
+     * Checks for primality, suitable for parallelization. It breaks when the class flag foundNotPrime is set.
+     *
      * @param number the number to check
-     * @param start starting index (inclusive)
-     * @param end final index (exclusive)
+     * @param start  starting index (inclusive)
+     * @param end    final index (exclusive)
      * @return whether or not this number is prime.
      */
     private boolean checkIfPrime(long number, long start, long end) {

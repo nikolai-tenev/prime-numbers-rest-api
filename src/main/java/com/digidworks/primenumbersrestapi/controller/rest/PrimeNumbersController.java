@@ -39,7 +39,7 @@ public class PrimeNumbersController {
      * @return the next prime which is >=number.
      */
     @GetMapping("/find-next-prime/{number}")
-    public Integer findNextPrime(@PathVariable Integer number) {
+    public long findNextPrime(@PathVariable long number) throws ExecutionException, InterruptedException {
         return primeNumbers.findNextPrime(number);
     }
 }
