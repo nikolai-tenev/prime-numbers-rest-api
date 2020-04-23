@@ -71,8 +71,12 @@ public class PrimeNumbers {
     public long findNextPrime(long number) throws ExecutionException, InterruptedException {
         long nextProbablePrime = number % 2 == 0 ? number + 1 : number;
 
-        while (!isPrime(nextProbablePrime)) {
+        while (nextProbablePrime < Long.MAX_VALUE && !isPrime(nextProbablePrime)) {
             nextProbablePrime += 2;
+        }
+
+        if (nextProbablePrime == Long.MAX_VALUE) {
+            return 0;
         }
 
         return nextProbablePrime;
