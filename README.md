@@ -1,4 +1,4 @@
-#REST API for running primality checks on numbers.
+# REST API for running primality checks on numbers.
 
 The method I chose is the so called naive approach and is adapted from the sieve of Eratosthenes.
  
