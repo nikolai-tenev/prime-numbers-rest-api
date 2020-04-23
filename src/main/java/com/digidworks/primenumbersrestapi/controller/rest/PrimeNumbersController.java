@@ -5,10 +5,7 @@ import com.digidworks.primenumbersrestapi.service.PrimeNumbers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.ExecutionException;
 
@@ -18,6 +15,10 @@ import java.util.concurrent.ExecutionException;
 @Api(tags = {"Prime Numbers"})
 @RestController
 @RequestMapping("/api/prime-numbers")
+@CrossOrigin(
+        origins = {"http://localhost/", "https://domain.com/"},
+        methods = {RequestMethod.GET}
+)
 public class PrimeNumbersController {
     private PrimeNumbers primeNumbers;
 
